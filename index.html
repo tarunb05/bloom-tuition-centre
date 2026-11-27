@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloom Tuition Centre · Kothanur, Bengaluru</title>
+<meta name="description" content="Bloom Tuition Centre in BDS Nagar, Kothanur, Bengaluru. Tuition for Classes 1–12: English, Hindi, Maths, Science and Social Studies up to Class 10; Physics, Chemistry, Maths and Biology for Classes 11–12. CBSE, ICSE and Karnataka State Board. Weekday evenings, 5:30–7:30 pm.">
+<meta name="theme-color" content="#183B4E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 24 24'%3E%3Crect x='-12' y='-12' width='24' height='24' rx='6' fill='%23183B4E'/%3E%3Cpath d='M0 0C3 -3 3 -8 0 -9C-3 -8 -3 -3 0 0C3 3 3 8 0 9C-3 8 -3 3 0 0C-3 3 -8 3 -9 0C-8 -3 -3 -3 0 0C3 3 8 3 9 0C8 -3 3 -3 0 0Z' fill='%23DDA853'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5EEDC;
+  --paper-hi:#FBF7EC;
+  --paper-lo:#ECE2C8;
+  --ink:#27548A;
+  --board:#183B4E;
+  --marigold:#DDA853;
+  --text:#183B4E;
+  --muted:rgba(24,59,78,.68);
+  --rule:rgba(24,59,78,.16);
+  --grid:rgba(39,84,138,.09);
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, monospace;
+  --wrap:1240px;
+  --pad:clamp(20px, 4vw, 48px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font-family:var(--body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg,canvas,iframe{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.mono{font-family:var(--mono);font-size:13px;letter-spacing:.04em}
+.skip{position:absolute;left:-999px;top:8px;background:var(--board);color:var(--paper);padding:10px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:700;font-size:17px;text-decoration:none;padding:15px 24px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1), background-color .2s, color .2s, box-shadow .25s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:var(--marigold);color:var(--board);box-shadow:0 1px 0 rgba(24,59,78,.25), 0 10px 24px -12px rgba(160,110,30,.7)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(24,59,78,.25), 0 16px 30px -12px rgba(160,110,30,.8)}
+.btn-line{border-color:var(--board);color:var(--board);background:transparent}
+.btn-line:hover{background:var(--board);color:var(--paper)}
+.btn-light{border-color:rgba(245,238,220,.5);color:var(--paper)}
+.btn-light:hover{background:var(--paper);color:var(--board);border-color:var(--paper)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;transition:background-color .3s, box-shadow .3s, backdrop-filter .3s}
+.nav.scrolled{background:rgba(245,238,220,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--rule)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:38px;height:38px}
+.brand b{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1;font-variation-settings:"opsz" 30}
+.brand span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:16px;font-weight:700;position:relative;padding:6px 0}
+.nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--marigold);transition:right .3s}
+.nav ul a:hover::after{right:0}
+.nav .btn{padding:11px 18px;font-size:15px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:40px 0 96px;margin-top:-76px;padding-top:calc(76px + 48px)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;background-position:-1px -1px;-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.08fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.eyebrow{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;padding:0;list-style:none}
+.eyebrow li{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--rule);border-radius:999px;background:rgba(251,247,236,.7)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.9rem,5.3vw,5.2rem);line-height:.94;letter-spacing:-.045em;margin:0 0 28px;font-variation-settings:"opsz" 96}
+h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
+h1 .line > span{display:inline-block;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+h1 .line:nth-child(2) > span{animation-delay:.1s}
+h1 .line:nth-child(3) > span{animation-delay:.2s}
+h1 em{font-style:normal;color:var(--ink);background:linear-gradient(var(--marigold),var(--marigold)) 0 88%/0 .16em no-repeat;animation:underline .8s .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes rise{to{transform:none}}
+@keyframes underline{to{background-size:100% .16em}}
+.lead{font-size:clamp(18px,1.6vw,21px);max-width:31em;margin:0 0 34px;color:var(--muted)}
+.lead strong{color:var(--text)}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-family:var(--mono);font-size:13px;letter-spacing:.03em}
+.status i{width:9px;height:9px;border-radius:50%;background:#9aa7ad;flex:none}
+.status.open i{background:#3f9d5a;box-shadow:0 0 0 0 rgba(63,157,90,.5);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px rgba(63,157,90,0)}100%{box-shadow:0 0 0 0 rgba(63,157,90,0)}}
+
+/* figure plate */
+.plate{background:var(--paper-hi);border:1.5px solid var(--board);border-radius:22px;box-shadow:10px 10px 0 var(--board);overflow:hidden;opacity:0;transform:translateY(24px) rotate(.6deg);animation:plate 1s .25s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes plate{to{opacity:1;transform:rotate(.6deg)}}
+.plate-head,.plate-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px}
+.plate-head{border-bottom:1px solid var(--rule);text-transform:uppercase}
+.plate-head .eq{text-transform:none;font-size:15px;font-weight:500;color:var(--ink)}
+.plate canvas{width:100%;aspect-ratio:1/1;height:auto}
+.plate-foot{border-top:1px solid var(--rule);flex-direction:column;align-items:stretch;gap:12px}
+.k-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.k-row .mono{margin-right:4px;color:var(--muted)}
+.k{font-family:var(--mono);font-size:14px;min-width:44px;height:36px;padding:0 10px;border-radius:10px;border:1px solid var(--rule);background:transparent;color:var(--text);cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.k:hover{border-color:var(--board)}
+.k[aria-pressed="true"]{background:var(--board);color:var(--paper);border-color:var(--board)}
+.caption{margin:0;font-size:15px;line-height:1.5;color:var(--muted);min-height:3em}
+
+/* ---------- board (approach) ---------- */
+.board{background:var(--board);color:var(--paper);position:relative;overflow:hidden}
+.board::before{content:"";position:absolute;inset:0;background:radial-gradient(1200px 500px at 80% -10%,rgba(39,84,138,.55),transparent 60%);pointer-events:none}
+.approach{padding:clamp(96px,13vw,170px) 0}
+.approach .wrap{position:relative}
+.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 28px;display:flex;align-items:center;gap:12px}
+.kicker::before{content:"";width:28px;height:2px;background:var(--marigold)}
+.statement{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4.6vw,4.1rem);line-height:1.08;letter-spacing:-.03em;margin:0;max-width:17em;font-variation-settings:"opsz" 72}
+.statement .w{opacity:.2;transition:opacity .25s}
+.statement .w.on{opacity:1}
+.statement .hl{color:var(--marigold)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:clamp(64px,8vw,110px);padding-top:36px;border-top:1px solid rgba(245,238,220,.18)}
+.pillars h3{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.02em;margin:0 0 10px;line-height:1.15}
+.pillars p{margin:0;color:rgba(245,238,220,.72);font-size:17px}
+.pillars svg{width:44px;height:44px;margin-bottom:18px}
+
+/* ---------- sections ---------- */
+.section{padding:clamp(88px,11vw,150px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:clamp(40px,5vw,64px);flex-wrap:wrap}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,5.4vw,4.6rem);line-height:.96;letter-spacing:-.04em;margin:0;max-width:12em;font-variation-settings:"opsz" 96}
+h2 em{font-style:normal;color:var(--ink)}
+.sec-head p{max-width:26em;margin:0;color:var(--muted)}
+
+/* classes */
+.classes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.class{position:relative;background:var(--paper-hi);border:1px solid var(--rule);border-radius:22px;padding:30px 28px 28px;display:flex;flex-direction:column;min-height:400px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s}
+.class::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:22px 22px;opacity:0;transition:opacity .35s;pointer-events:none}
+.class:hover{transform:translateY(-6px);border-color:var(--board);box-shadow:8px 8px 0 var(--board)}
+.class:hover::before{opacity:1}
+.class > *{position:relative}
+.class .range{font-family:var(--display);font-weight:800;font-size:clamp(4.2rem,7vw,6rem);line-height:.85;letter-spacing:-.05em;color:var(--ink);margin:0 0 6px;font-variation-settings:"opsz" 96}
+.class .range small{font-size:.28em;letter-spacing:0;font-weight:700;color:var(--muted);margin-left:.3em;vertical-align:.25em}
+.class h3{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.02em;margin:16px 0 10px}
+.class p{margin:0 0 22px;color:var(--muted);font-size:17px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:auto 0 0;padding:0;list-style:none}
+.tags li{font-family:var(--mono);font-size:12.5px;padding:6px 10px;border-radius:8px;background:var(--paper-lo)}
+.class.featured{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.class.featured .range{color:var(--marigold)}
+.class.featured .range small,.class.featured p{color:rgba(245,238,220,.78)}
+.class.featured .tags li{background:rgba(245,238,220,.14)}
+.class.featured::before{background-image:linear-gradient(rgba(245,238,220,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(245,238,220,.07) 1px,transparent 1px)}
+.boards{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:34px;padding-top:26px;border-top:1px solid var(--rule)}
+.boards b{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.01em}
+.boards .mono{color:var(--muted);text-transform:uppercase}
+
+/* reviews */
+.reviews-sec{background:var(--paper-lo)}
+.rating{display:flex;align-items:center;gap:16px}
+.rating .score{font-family:var(--display);font-weight:800;font-size:64px;line-height:1;letter-spacing:-.04em}
+.stars{color:var(--marigold);font-size:20px;letter-spacing:2px;line-height:1}
+.rating a{font-size:15px;font-weight:700}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{background:var(--paper-hi);border-radius:22px;padding:30px;display:flex;flex-direction:column;border:1px solid var(--rule)}
+.review .next{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin:0 0 14px}
+.review h3{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.5vw,32px);line-height:1.05;letter-spacing:-.03em;margin:0 0 20px}
+.review blockquote{margin:0 0 26px;font-size:17px;color:var(--muted)}
+.review footer{margin-top:auto;display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--rule)}
+.review footer .avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:15px;background:var(--board);color:var(--paper);flex:none}
+.review footer b{display:block;font-size:16px;line-height:1.2}
+.review footer span{font-size:14px;color:var(--muted)}
+
+/* visit */
+.visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,56px);align-items:stretch}
+.timetable{list-style:none;margin:0 0 30px;padding:0;border-top:1.5px solid var(--board)}
+.timetable li{display:grid;grid-template-columns:1fr auto;align-items:center;padding:13px 4px;border-bottom:1px solid var(--rule);position:relative}
+.timetable li span:first-child{font-weight:700}
+.timetable li span:last-child{font-family:var(--mono);font-size:15px}
+.timetable li.off span:last-child{color:var(--muted)}
+.timetable li.today{background:linear-gradient(90deg,rgba(221,168,83,.35),rgba(221,168,83,0));padding-left:16px}
+.timetable li.today::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--marigold)}
+.timetable li.today span:first-child::after{content:"Today";font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-left:10px;padding:3px 7px;border-radius:6px;background:var(--board);color:var(--paper);vertical-align:2px;font-weight:400}
+.address{font-style:normal;margin:0 0 24px;font-size:19px;line-height:1.5}
+.address a{font-weight:700;text-decoration-color:var(--marigold);text-decoration-thickness:2px;text-underline-offset:4px}
+.visit-actions{display:flex;flex-wrap:wrap;gap:12px}
+.map{position:relative;border-radius:24px;overflow:hidden;border:1.5px solid var(--board);box-shadow:10px 10px 0 var(--ink);min-height:460px;background:var(--paper-lo)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.75) contrast(1.02)}
+
+/* final cta */
+.final{padding:clamp(100px,13vw,180px) 0;text-align:center}
+.final .wrap{position:relative}
+.final-rose{position:absolute;left:50%;top:50%;width:min(720px,110vw);transform:translate(-50%,-50%);opacity:.16;pointer-events:none}
+.final h2{color:var(--paper);margin:0 auto 22px;max-width:11em}
+.final h2 em{color:var(--marigold)}
+.final p{color:rgba(245,238,220,.75);max-width:30em;margin:0 auto 38px;font-size:19px}
+.final .ctas{justify-content:center}
+
+footer.site{background:var(--board);color:rgba(245,238,220,.7);border-top:1px solid rgba(245,238,220,.12);padding:40px 0 110px;font-size:15px}
+footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer.site a{color:var(--paper)}
+
+/* floating contact */
+.fab{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;align-items:center;gap:10px;background:var(--marigold);color:var(--board);text-decoration:none;font-weight:700;font-size:16px;padding:14px 20px 14px 16px;border-radius:999px;box-shadow:0 2px 0 var(--board), 0 18px 36px -14px rgba(24,59,78,.6);transform:translateY(120px);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.fab.show{transform:none}
+.fab:hover{transform:translateY(-3px)}
+.fab svg{width:26px;height:26px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .nav ul{display:none}
+  .hero .wrap{grid-template-columns:1fr}
+  .plate{max-width:560px}
+  .classes,.reviews,.pillars{grid-template-columns:1fr}
+  .class{min-height:0}
+  .visit-grid{grid-template-columns:1fr}
+  .map{min-height:380px}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  .brand span{display:none}
+  .nav .btn{padding:10px 14px;width:auto}
+  .nav .btn .lbl{display:none}
+  .btn{width:100%;justify-content:center}
+  .fab{padding:14px}
+  .fab .lbl{display:none}
+  .plate{box-shadow:6px 6px 0 var(--board)}
+  .map{box-shadow:6px 6px 0 var(--ink)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+  .statement .w{opacity:1}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-wa" viewBox="0 0 24 24">
+      <path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.2 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+      <path d="M16.9 14.4c-.3-.1-1.6-.8-1.8-.9-.3-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1a7 7 0 0 1-3.5-3c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.1.2-1.3-.1-.1-.3-.2-.7-.3z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M21 16.5v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.1 3.7 2 2 0 0 1 3.1 1.5h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.4a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="logo" viewBox="-12 -12 24 24">
+      <rect x="-12" y="-12" width="24" height="24" rx="6.5" fill="#183B4E"/>
+      <path d="M0 0C3 -3 3 -8 0 -9C-3 -8 -3 -3 0 0C3 3 3 8 0 9C-3 8 -3 3 0 0C-3 3 -8 3 -9 0C-8 -3 -3 -3 0 0C3 3 8 3 9 0C8 -3 3 -3 0 0Z" fill="#DDA853"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Bloom Tuition Centre, home">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <div><b>Bloom</b><span>Tuition Centre · Kothanur</span></div>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#approach">How we teach</a></li>
+        <li><a href="#students">Students</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+      <svg aria-hidden="true"><use href="#i-wa"/></svg><span class="lbl">Contact us</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <ul class="eyebrow" aria-label="At a glance">
+        <li>Classes 1–12</li><li>CBSE · ICSE · State</li><li>BDS Nagar, Kothanur</li>
+      </ul>
+      <h1>
+        <span class="line"><span>Every subject,</span></span>
+        <span class="line"><span>understood.</span></span>
+        <span class="line"><span><em>Not memorised.</em></span></span>
+      </h1>
+      <p class="lead">An evening tuition centre in Kothanur, Bengaluru, for Classes 1 to 12, where <strong>every lesson comes with its reason</strong>. Once you see why something works, you don't have to cram it the night before the exam.</p>
+      <div class="ctas">
+        <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Contact us on WhatsApp</a>
+        <a class="btn btn-line" href="#visit"><svg aria-hidden="true"><use href="#i-pin"/></svg>Find the centre</a>
+      </div>
+      <p class="status" id="status" aria-live="polite"><i></i><span>Checking today's timings…</span></p>
+    </div>
+
+    <figure class="plate" aria-labelledby="fig-cap" style="margin:0">
+      <div class="plate-head mono"><span>Fig. 1 · Polar rose</span><span class="eq" id="eq">r = cos(4θ)</span></div>
+      <canvas id="rose" role="img" aria-label="A rose curve being drawn on polar graph paper"></canvas>
+      <div class="plate-foot">
+        <div class="k-row" role="group" aria-label="Choose k">
+          <span class="mono">Try k =</span>
+          <button class="k" data-n="4" data-d="1" aria-pressed="true">4</button>
+          <button class="k" data-n="3" data-d="1" aria-pressed="false">3</button>
+          <button class="k" data-n="5" data-d="1" aria-pressed="false">5</button>
+          <button class="k" data-n="2" data-d="1" aria-pressed="false">2</button>
+          <button class="k" data-n="7" data-d="3" aria-pressed="false">7/3</button>
+          <button class="k" data-n="5" data-d="4" aria-pressed="false">5/4</button>
+        </div>
+        <figcaption class="caption" id="fig-cap">A flower is just an equation drawn out. With k = 4 you get 8 petals. Change k and see what happens.</figcaption>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="board approach" id="approach" aria-labelledby="approach-k">
+  <div class="wrap">
+    <p class="kicker" id="approach-k">How we teach</p>
+    <p class="statement" id="statement">No rote learning. We take each concept apart until it makes sense, then practise it until it's <span class="hl">yours</span>. Marks follow understanding, not the other way round.</p>
+    <div class="pillars">
+      <div class="rv">
+        <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="17" fill="none" stroke="#DDA853" stroke-width="2"/><path d="M22 22 L37 14" stroke="#F5EEDC" stroke-width="2" stroke-linecap="round"/><circle cx="37" cy="14" r="3" fill="#DDA853"/></svg>
+        <h3>The why comes first</h3>
+        <p>Every rule, formula and fact gets explained before it's used, so students know where it comes from and when it applies.</p>
+      </div>
+      <div class="rv d1">
+        <svg viewBox="0 0 44 44" aria-hidden="true"><path d="M6 34 Q 16 6 22 22 T 38 10" fill="none" stroke="#DDA853" stroke-width="2" stroke-linecap="round"/><path d="M6 38 H38 M6 38 V6" stroke="#F5EEDC" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Questions are the lesson</h3>
+        <p>"Why?" is welcome at any point in the class. Doubts get cleared on the spot, not saved up until exam week.</p>
+      </div>
+      <div class="rv d2">
+        <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="8" y="6" width="28" height="32" rx="4" fill="none" stroke="#F5EEDC" stroke-width="2"/><path d="M14 18 l4 4 l8 -9" fill="none" stroke="#DDA853" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 30 H30" stroke="#F5EEDC" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Practice that checks thinking</h3>
+        <p>Problems that test whether the idea has landed, not just whether the steps were memorised.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="classes" aria-labelledby="classes-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="classes-h" class="rv">Classes 1 to 12, <em>every board.</em></h2>
+      <p class="rv d1">Batches are grouped by class and syllabus, so what we cover in the evening matches what your school covers that week.</p>
+    </div>
+    <div class="classes">
+      <article class="class rv">
+        <p class="range">1–5<small>Class</small></p>
+        <h3>Primary years</h3>
+        <p>Reading, writing and number sense built properly from the start, with homework help so school stays stress-free.</p>
+        <ul class="tags"><li>English</li><li>Hindi</li><li>Mathematics</li><li>Science</li><li>Social Studies</li></ul>
+      </article>
+      <article class="class featured rv d1">
+        <p class="range">6–10<small>Class</small></p>
+        <h3>Middle &amp; board years</h3>
+        <p>Concept-by-concept teaching in all five subjects, with steady test practice leading up to the Class 10 boards.</p>
+        <ul class="tags"><li>English</li><li>Hindi</li><li>Mathematics</li><li>Science</li><li>Social Studies</li></ul>
+      </article>
+      <article class="class rv d2">
+        <p class="range">11–12<small>Class / PU</small></p>
+        <h3>Science stream</h3>
+        <p>Physics, chemistry, maths and biology from first principles, so the hard chapters stop feeling like magic tricks.</p>
+        <ul class="tags"><li>Physics</li><li>Chemistry</li><li>Mathematics</li><li>Biology</li></ul>
+      </article>
+    </div>
+    <div class="boards rv">
+      <span class="mono">Syllabus</span>
+      <b>CBSE</b><b>ICSE</b><b>Karnataka State Board</b>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews-sec" id="students" aria-labelledby="students-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="students-h" class="rv">Where our students <em>went next.</em></h2>
+      <div class="rating rv d1">
+        <span class="score">5.0</span>
+        <div>
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <a href="https://www.google.com/maps/place/Bloom+Tuition+Centre/@13.0669147,77.6420212,17z/data=!4m6!3m5!1s0x3bae19a4167d8c39:0xcb09a7240a235177!8m2!3d13.0669147!4d77.6420212!16s%2Fg%2F11nq006zmz" target="_blank" rel="noopener">Read all reviews on Google</a>
+        </div>
+      </div>
+    </div>
+    <div class="reviews">
+      <article class="review rv">
+        <p class="next">Physics</p>
+        <h3>Now studying in France</h3>
+        <blockquote>"Ryan sir helped me out with physics for a year… He prefers students have a clarity of concepts and does not support rote learning. With his help, I'm now studying in France and have worked in well reputed labs."</blockquote>
+        <footer><span class="avatar" aria-hidden="true">AK</span><div><b>Aditi Krishnan</b><span>Google review</span></div></footer>
+      </article>
+      <article class="review rv d1">
+        <p class="next">Mathematics</p>
+        <h3>Admitted to the University of Michigan</h3>
+        <blockquote>"Ryan Sir taught me mathematics which reignited my love for math; because of which I was able to obtain an admission in University of Michigan, USA to study mathematics further."</blockquote>
+        <footer><span class="avatar" aria-hidden="true">AA</span><div><b>Anita Anil</b><span>Google review</span></div></footer>
+      </article>
+      <article class="review rv d2">
+        <p class="next">Class 11 &amp; 12 physics</p>
+        <h3>Stronger concepts for CBSE science</h3>
+        <blockquote>"I took 11th and 12th physics tuitions from Ryan at Bloom tuitions and it really helped me strengthen my concepts and understand physics much better, would highly recommend… especially for science CBSE."</blockquote>
+        <footer><span class="avatar" aria-hidden="true">SA</span><div><b>Siman Ayaz</b><span>Google review</span></div></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="visit" aria-labelledby="visit-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="visit-h" class="rv">Evenings in <em>BDS Nagar.</em></h2>
+      <p class="rv d1">Classes run after school, Monday to Friday. Drop by during timings or message us first to fix a time.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="rv">
+        <ul class="timetable" id="timetable" aria-label="Weekly timings">
+          <li data-d="1"><span>Monday</span><span>5:30 – 7:30 pm</span></li>
+          <li data-d="2"><span>Tuesday</span><span>5:30 – 7:30 pm</span></li>
+          <li data-d="3"><span>Wednesday</span><span>5:30 – 7:30 pm</span></li>
+          <li data-d="4"><span>Thursday</span><span>5:30 – 7:30 pm</span></li>
+          <li data-d="5"><span>Friday</span><span>5:30 – 7:30 pm</span></li>
+          <li data-d="6" class="off"><span>Saturday</span><span>Closed</span></li>
+          <li data-d="0" class="off"><span>Sunday</span><span>Closed</span></li>
+        </ul>
+        <address class="address">
+          39, 10th Cross, BDS Nagar, Kothanur,<br>Narayanapura, Bengaluru, Karnataka 560077<br>
+          <a href="tel:+917892301731">078923 01731</a>
+        </address>
+        <div class="visit-actions">
+          <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Contact us on WhatsApp</a>
+          <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=13.0669147,77.6420212" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg>Get directions</a>
+        </div>
+      </div>
+      <div class="map rv d1">
+        <iframe title="Map showing Bloom Tuition Centre in BDS Nagar, Kothanur" src="https://www.google.com/maps?q=Bloom+Tuition+Centre,+39,+10th+cross,+BDS+Nagar,+Kothanur,+Bengaluru+560077&amp;ll=13.0669147,77.6420212&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>      </div>
+    </div>
+  </div>
+</section>
+
+<section class="board final" aria-labelledby="final-h">
+  <div class="wrap">
+    <svg class="final-rose" id="final-rose" viewBox="-1.05 -1.05 2.1 2.1" aria-hidden="true"></svg>
+    <h2 id="final-h" class="rv">Come sit in on <em>a class.</em></h2>
+    <p class="rv d1">Tell us your child's class and board on WhatsApp. We'll suggest a batch and a time to drop by.</p>
+    <div class="ctas rv d2">
+      <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Contact us on WhatsApp</a>
+      <a class="btn btn-light" href="tel:+917892301731"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call 078923 01731</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Bloom Tuition Centre · BDS Nagar, Kothanur, Bengaluru</span>
+    <span>Mon–Fri, 5:30–7:30 pm · <a href="tel:+917892301731">078923 01731</a></span>
+  </div>
+</footer>
+
+<a class="fab wa-link" id="fab" href="#" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+  <svg aria-hidden="true"><use href="#i-wa"/></svg><span class="lbl">Contact us</span>
+</a>
+
+<script>
+(() => {
+  /* ---------- WhatsApp links ---------- */
+  const WA_NUMBER = "917892301731";
+  const WA_TEXT = "Hi Bloom Tuition Centre! I'd like to know about classes for my child. Class: ___, Board: ___";
+  const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_TEXT)}`;
+  document.querySelectorAll(".wa-link").forEach(a => a.href = waHref);
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- nav + fab on scroll ---------- */
+  const nav = document.getElementById("nav"), fab = document.getElementById("fab");
+  const onScroll = () => {
+    const y = scrollY;
+    nav.classList.toggle("scrolled", y > 10);
+    fab.classList.toggle("show", y > innerHeight * 0.6);
+  };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* ---------- open / closed status (IST) ---------- */
+  const HOURS = { 0: null, 1: [1050, 1170], 2: [1050, 1170], 3: [1050, 1170], 4: [1050, 1170], 5: [1050, 1170], 6: null };
+  const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const fmt = m => { const h = Math.floor(m/60), mm = m%60; return `${((h+11)%12)+1}${mm?":"+String(mm).padStart(2,"0"):""} pm`; };
+  function ist() {
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+    const d = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(p.weekday);
+    return { d, m: (+p.hour % 24) * 60 + (+p.minute) };
+  }
+  function updateStatus() {
+    const { d, m } = ist();
+    const el = document.getElementById("status"), span = el.querySelector("span");
+    const h = HOURS[d];
+    if (h && m >= h[0] && m < h[1]) { el.classList.add("open"); span.textContent = `Open now · classes until ${fmt(h[1])}`; }
+    else {
+      el.classList.remove("open");
+      if (h && m < h[0]) span.textContent = `Closed now · opens today at ${fmt(h[0])}`;
+      else { let n = (d + 1) % 7; while (!HOURS[n]) n = (n + 1) % 7; span.textContent = `Closed now · opens ${n === (d+1)%7 ? "tomorrow" : DAYS[n]} at ${fmt(HOURS[n][0])}`; }
+    }
+    document.querySelectorAll("#timetable li").forEach(li => li.classList.toggle("today", +li.dataset.d === d));
+  }
+  updateStatus(); setInterval(updateStatus, 60000);
+
+  /* ---------- rose curve ---------- */
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  const period = (n, d) => ((n * d) % 2 === 1 ? Math.PI : 2 * Math.PI) * d;
+  function caption(n, d) {
+    if (d === 1) return n % 2
+      ? `With k = ${n} (odd) you get ${n} petals. Odd k gives k petals; even k gives twice as many. Ask us why.`
+      : `With k = ${n} (even) you get ${2*n} petals. Even k doubles the petals; odd k doesn't. Ask us why.`;
+    return `With k = ${n}/${d} the curve goes round ${d} times before it closes, and the petals overlap.`;
+  }
+  const eqText = (n, d) => d === 1 ? `r = cos(${n}θ)` : `r = cos(${n}θ/${d})`;
+
+  const cv = document.getElementById("rose"), ctx = cv.getContext("2d");
+  const eqEl = document.getElementById("eq"), capEl = document.getElementById("fig-cap");
+  const btns = [...document.querySelectorAll(".k")];
+  let size = 0, dpr = 1, cur = { n: 4, d: 1 }, start = 0, auto = !reduce, idx = 0, raf = 0, visible = true;
+  const DRAW = 3600, HOLD = 2600;
+
+  function resize() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    size = cv.clientWidth;
+    cv.width = size * dpr; cv.height = size * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function grid(R, c) {
+    ctx.save();
+    ctx.strokeStyle = "rgba(39,84,138,.16)"; ctx.lineWidth = 1;
+    ctx.setLineDash([3, 5]);
+    for (let i = 1; i <= 4; i++) { ctx.beginPath(); ctx.arc(c, c, R * i / 4, 0, Math.PI * 2); ctx.stroke(); }
+    ctx.setLineDash([]);
+    for (let a = 0; a < 12; a++) {
+      const t = a * Math.PI / 6;
+      ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(c + Math.cos(t) * R * 1.06, c - Math.sin(t) * R * 1.06); ctx.stroke();
+    }
+    ctx.fillStyle = "rgba(24,59,78,.5)"; ctx.font = `500 ${Math.max(10, size * .022)}px "IBM Plex Mono", monospace`;
+    ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    [[0,"0°"],[90,"90°"],[180,"180°"],[270,"270°"]].forEach(([deg, l]) => {
+      const t = deg * Math.PI / 180; ctx.fillText(l, c + Math.cos(t) * R * 1.15, c - Math.sin(t) * R * 1.15);
+    });
+    ctx.restore();
+  }
+  function frame(now) {
+    if (!start) start = now;
+    const R = size * 0.4, c = size / 2;
+    ctx.clearRect(0, 0, size, size);
+    grid(R, c);
+    const { n, d } = cur, k = n / d, T = period(n, d);
+    const el = now - start;
+    let p = reduce ? 1 : Math.min(el / DRAW, 1);
+    p = 1 - Math.pow(1 - p, 2.2);
+    const th = T * p, steps = Math.ceil(900 * d * p) + 2;
+    ctx.beginPath();
+    for (let i = 0; i <= steps; i++) {
+      const t = th * i / steps, r = Math.cos(k * t) * R;
+      const x = c + r * Math.cos(t), y = c - r * Math.sin(t);
+      i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    if (p >= 1) {
+      const fa = reduce ? 1 : Math.min((el - DRAW) / 600, 1);
+      ctx.fillStyle = `rgba(221,168,83,${0.28 * fa})`; ctx.fill("evenodd");
+    }
+    ctx.strokeStyle = "#DDA853"; ctx.lineWidth = Math.max(2, size * 0.006); ctx.lineJoin = "round"; ctx.stroke();
+    // pen arm
+    if (p < 1 || !reduce) {
+      const r = Math.cos(k * th) * R, x = c + r * Math.cos(th), y = c - r * Math.sin(th);
+      const fade = p < 1 ? 1 : Math.max(0, 1 - (el - DRAW) / 500);
+      if (fade > 0) {
+        ctx.save(); ctx.globalAlpha = fade;
+        ctx.strokeStyle = "#27548A"; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(x, y); ctx.stroke();
+        ctx.fillStyle = "#183B4E"; ctx.beginPath(); ctx.arc(c, c, 3, 0, 7); ctx.fill();
+        ctx.fillStyle = "#27548A"; ctx.beginPath(); ctx.arc(x, y, 5, 0, 7); ctx.fill();
+        ctx.fillStyle = "#183B4E"; ctx.font = `500 ${Math.max(11, size * .024)}px "IBM Plex Mono", monospace`;
+        ctx.textAlign = "left"; ctx.textBaseline = "top";
+        ctx.fillText(`θ = ${Math.round(th * 180 / Math.PI)}°`, 16, 14);
+        ctx.restore();
+      }
+    }
+    if (auto && el > DRAW + HOLD) { idx = (idx + 1) % btns.length; select(btns[idx], false); }
+    if (!reduce && visible) raf = requestAnimationFrame(frame);
+  }
+  function select(btn, manual) {
+    if (manual) auto = false;
+    idx = btns.indexOf(btn);
+    btns.forEach(b => b.setAttribute("aria-pressed", b === btn));
+    cur = { n: +btn.dataset.n, d: +btn.dataset.d };
+    eqEl.textContent = eqText(cur.n, cur.d);
+    capEl.textContent = caption(cur.n, cur.d);
+    start = 0;
+    if (reduce) requestAnimationFrame(frame);
+  }
+  btns.forEach(b => b.addEventListener("click", () => select(b, true)));
+  resize(); addEventListener("resize", () => { resize(); if (reduce) requestAnimationFrame(frame); });
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    if (visible && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }
+  }).observe(cv);
+  document.fonts && document.fonts.ready.then(() => { if (reduce) requestAnimationFrame(frame); });
+  requestAnimationFrame(frame);
+
+  /* ---------- final section rose (static SVG) ---------- */
+  (() => {
+    const k = 5 / 2, T = period(5, 2); let dStr = "";
+    for (let i = 0; i <= 1600; i++) { const t = T * i / 1600, r = Math.cos(k * t); dStr += (i ? "L" : "M") + (r * Math.cos(t)).toFixed(4) + " " + (-r * Math.sin(t)).toFixed(4); }
+    document.getElementById("final-rose").innerHTML = `<path d="${dStr}Z" fill="none" stroke="#DDA853" stroke-width="0.006"/>`;
+  })();
+
+  /* ---------- statement word highlight ---------- */
+  const st = document.getElementById("statement");
+  const wrapWords = node => {
+    [...node.childNodes].forEach(ch => {
+      if (ch.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        ch.textContent.split(/(\s+)/).forEach(w => {
+          if (!w) return;
+          if (/^\s+$/.test(w)) frag.appendChild(document.createTextNode(w));
+          else { const s = document.createElement("span"); s.className = "w"; s.textContent = w; frag.appendChild(s); }
+        });
+        ch.replaceWith(frag);
+      } else if (ch.nodeType === 1) { ch.classList.add("w"); }
+    });
+  };
+  wrapWords(st);
+  const words = [...st.querySelectorAll(".w")];
+  const lightWords = () => {
+    const r = st.getBoundingClientRect();
+    const prog = (innerHeight * 0.82 - r.top) / (r.height + innerHeight * 0.35);
+    const n = Math.round(Math.max(0, Math.min(1, prog)) * words.length);
+    words.forEach((w, i) => w.classList.toggle("on", i < n));
+  };
+  if (!reduce) { addEventListener("scroll", lightWords, { passive: true }); lightWords(); }
+
+  /* ---------- reveals ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".rv").forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
