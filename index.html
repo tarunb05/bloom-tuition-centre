@@ -6,7 +6,8 @@
 <title>Bloom Tuition Centre · Kothanur, Bengaluru</title>
 <meta name="description" content="Bloom Tuition Centre in BDS Nagar, Kothanur, Bengaluru. Tuition for Classes 1–12: English, Hindi, Maths, Science and Social Studies up to Class 10; Physics, Chemistry, Maths and Biology for Classes 11–12. CBSE, ICSE and Karnataka State Board. Monday to Friday, 5:30–7:30 pm.">
 <meta name="theme-color" content="#183B4E">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 24 24'%3E%3Crect x='-12' y='-12' width='24' height='24' rx='6' fill='%23183B4E'/%3E%3Cpath d='M0 0C3 -3 3 -8 0 -9C-3 -8 -3 -3 0 0C3 3 3 8 0 9C-3 8 -3 3 0 0C-3 3 -8 3 -9 0C-8 -3 -3 -3 0 0C3 3 8 3 9 0C8 -3 3 -3 0 0Z' fill='%23DDA853'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -54,7 +55,7 @@ a{color:inherit}
 .nav.scrolled{background:rgba(245,238,220,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--rule)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand svg{width:38px;height:38px}
+.brand img{width:50px;height:auto}
 .brand b{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1;font-variation-settings:"opsz" 30}
 .brand span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 .nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
@@ -187,7 +188,10 @@ h2 em{font-style:normal;color:var(--ink)}
 .final .ctas{justify-content:center}
 
 footer.site{background:var(--board);color:rgba(245,238,220,.7);border-top:1px solid rgba(245,238,220,.12);padding:40px 0;font-size:15px}
-footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:28px}
+footer.site .foot-logo{width:auto;height:130px}
+footer.site .foot-info{display:flex;flex-direction:column;gap:6px;text-align:right}
+@media (max-width:560px){footer.site .foot-info{text-align:left}}
 footer.site a{color:var(--paper)}
 
 
@@ -234,23 +238,19 @@ footer.site a{color:var(--paper)}
     </symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M21 16.5v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.1 3.7 2 2 0 0 1 3.1 1.5h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.4a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-    <symbol id="logo" viewBox="-12 -12 24 24">
-      <rect x="-12" y="-12" width="24" height="24" rx="6.5" fill="#183B4E"/>
-      <path d="M0 0C3 -3 3 -8 0 -9C-3 -8 -3 -3 0 0C3 3 3 8 0 9C-3 8 -3 3 0 0C-3 3 -8 3 -9 0C-8 -3 -3 -3 0 0C3 3 8 3 9 0C8 -3 3 -3 0 0Z" fill="#DDA853"/>
-    </symbol>
   </defs>
 </svg>
 
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Bloom Tuition Centre, home">
-      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <img src="assets/logo-mark.png" alt="" width="50" height="49">
       <div><b>Bloom</b><span>Tuition Centre · Kothanur</span></div>
     </a>
     <nav aria-label="Main">
       <ul>
         <li><a href="#classes">Classes</a></li>
-        <li><a href="#approach">How we teach</a></li>
+        <li><a href="#approach">How We Teach</a></li>
         <li><a href="#students">Students</a></li>
         <li><a href="#visit">Visit</a></li>
       </ul>
@@ -302,7 +302,7 @@ footer.site a{color:var(--paper)}
 
 <section class="board approach" id="approach" aria-labelledby="approach-k">
   <div class="wrap">
-    <p class="kicker" id="approach-k">How we teach</p>
+    <p class="kicker" id="approach-k">How We Teach</p>
     <p class="statement" id="statement">No rote learning. We take each concept apart until it makes sense, then practise it until it's <span class="hl">yours</span>. Marks follow understanding, not the other way round.</p>
     <div class="pillars">
       <div class="rv">
@@ -439,8 +439,12 @@ footer.site a{color:var(--paper)}
 
 <footer class="site">
   <div class="wrap">
-    <span>© <span id="yr">2026</span> Bloom Tuition Centre · BDS Nagar, Kothanur, Bengaluru</span>
-    <span>Mon–Fri, 5:30–7:30 pm · <a href="tel:+917892301731">078923 01731</a></span>
+    <img class="foot-logo" src="assets/logo-full-cream.png" alt="Bloom Tuition Centre" width="410" height="527" loading="lazy">
+    <div class="foot-info">
+      <span>BDS Nagar, Kothanur, Bengaluru</span>
+      <span>Mon–Fri, 5:30–7:30 pm · <a href="tel:+917892301731">078923 01731</a></span>
+      <span>© <span id="yr">2026</span> Bloom Tuition Centre</span>
+    </div>
   </div>
 </footer>
 
