@@ -40,6 +40,20 @@ a{color:inherit}
 .skip{position:absolute;left:-999px;top:8px;background:var(--board);color:var(--paper);padding:10px 14px;border-radius:8px;z-index:100}
 .skip:focus{left:8px}
 
+/* ---------- scrollbar ---------- */
+/* Chrome, Edge, Safari: navy pill, inset from a cream track; blue on hover, marigold while dragging */
+::-webkit-scrollbar{width:14px;height:14px}
+::-webkit-scrollbar-track{background:var(--paper);border-left:1px solid var(--rule)}
+::-webkit-scrollbar-thumb{background:var(--board);border:4px solid var(--paper);border-radius:999px;min-height:56px}
+::-webkit-scrollbar-thumb:hover{background:var(--ink)}
+::-webkit-scrollbar-thumb:active{background:var(--marigold)}
+::-webkit-scrollbar-corner{background:var(--paper)}
+/* Firefox (no ::-webkit-scrollbar): thin navy thumb on cream */
+@supports not selector(::-webkit-scrollbar){
+  html{scrollbar-width:thin;scrollbar-color:var(--board) var(--paper)}
+}
+::selection{background:var(--marigold);color:var(--board)}
+
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:700;font-size:17px;text-decoration:none;padding:15px 24px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1), background-color .2s, color .2s, box-shadow .25s}
 .btn svg{width:20px;height:20px;flex:none}
